@@ -1,0 +1,171 @@
+/* ======================================================
+   Google Fonts import - Streetwear palette
+   Menu: Oswald
+   Titles: Anton
+   Subtitles: Montserrat
+   Body / Contenido: Inter
+   Price / Precio: Bebas Neue
+   ====================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Bebas+Neue&family=Inter:wght@300;400;600&family=Montserrat:wght@400;500;700&family=Oswald:wght@300;400;500;700&display=swap');
+
+:root{
+  /* colores/variables útiles (ajusta a tu tema) */
+  --text-color: #111111;
+  --muted: #666666;
+  --accent: #e23b3b; /* ejemplo para precio/cta */
+  --base-font-size: 16px;
+}
+
+/* --------------------------------------
+   Clase para el MENU (nav)
+   - Condensada, legible en espacios ajustados
+   - ideal para enlaces/nav items
+   -------------------------------------- */
+.font-menu {
+  font-family: 'Oswald', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 500;
+  font-size: .95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-color);
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --------------------------------------
+   Clase para TITULOS (H1 / producto destacado)
+   - Impactante, display-heavy, estilo street
+   -------------------------------------- */
+.font-title {
+  font-family: 'Anton', 'Bebas Neue', 'Oswald', system-ui, sans-serif;
+  font-weight: 400; /* Anton es un display sin múltiples pesos */
+  font-size: 2rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--text-color);
+  line-height: 1.05;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --------------------------------------
+   Clase para SUBTITULOS (H2 / pequeñas etiquetas)
+   - Geométrica y moderna para subtítulos o descripciones cortas
+   -------------------------------------- */
+.font-subtitle {
+  font-family: 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 1.125rem;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  text-transform: none;
+  line-height: 1.2;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --------------------------------------
+   Clase para CONTENIDO / párrafos (texto largo)
+   - Inter es óptima para interfaces: clara y neutra
+   -------------------------------------- */
+.font-body {
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 1rem; /* usa rem para escalar con root */
+  line-height: 1.5;
+  color: var(--text-color);
+  letter-spacing: 0.01em;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --------------------------------------
+   Clase para PRECIO (price tag)
+   - Display fuerte y reconocible, destaca el número
+   -------------------------------------- */
+.font-price {
+  font-family: 'Bebas Neue', 'Anton', 'Oswald', system-ui, sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--accent);
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------------------------
+   Algunas utilidades opcionales
+   --------------------------- */
+.text-uppercase { text-transform: uppercase; }
+.small { font-size: .875rem; }
+.muted { color: var(--muted); }
+
+/* Responsive examples (ajusta según tu diseño) */
+@media (min-width: 768px) {
+  .font-title { font-size: 2.6rem; }
+  .font-price { font-size: 1.9rem; }
+}
+
+/* FORZAR font-subtitle en botones/enlaces/badges (mayor especificidad para evitar overrides de Bootstrap) */
+button.font-subtitle,
+.btn.font-subtitle,
+a.font-subtitle,
+.badge.font-subtitle,
+.navbar .font-subtitle,
+.product-card .font-subtitle {
+  font-family: 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-weight: 500 !important;
+  -webkit-font-smoothing: antialiased !important;
+  text-transform: none !important; /* opcional: evita mayúsculas forzadas por otras reglas */
+}
+
+/* Asegurar también que los iconos dentro no pierdan la alineación */
+button.font-subtitle i,
+a.font-subtitle i {
+  vertical-align: middle;
+}
+
+/* ---------------------------
+   Forzar fuentes en Offcanvas / Carrito
+   (específicas y con mayor prioridad a Bootstrap)
+   --------------------------- */
+.offcanvas .font-subtitle,
+.offcanvas .font-body,
+.offcanvas .font-price,
+#cart-items.font-body,
+#checkout-button.font-subtitle {
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* título del offcanvas (subtítulo) */
+.offcanvas .font-subtitle,
+#checkout-button.font-subtitle,
+.offcanvas button.font-subtitle,
+.offcanvas .decrease-quantity.font-subtitle,
+.offcanvas .increase-quantity.font-subtitle {
+  font-family: 'Montserrat', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+}
+
+/* cuerpo / descripciones y cantidad */
+.offcanvas .font-body,
+#cart-items.font-body,
+.offcanvas input.form-control.font-body {
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-weight: 400 !important;
+}
+
+/* importe / subtotales */
+.offcanvas .font-price,
+#cart-items .font-price {
+  font-family: 'Bebas Neue', 'Anton', 'Oswald', system-ui, sans-serif !important;
+  font-weight: 400 !important;
+  color: var(--accent) !important;
+  font-size: 1.05rem !important;
+}
+
+/* pequeña mejora de alineación para iconos dentro de botones en offcanvas */
+.offcanvas button i,
+#cart-items button i {
+  vertical-align: middle;
+}

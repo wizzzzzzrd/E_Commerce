@@ -1,0 +1,23 @@
+
+/* WRAPPER: 5% de margen a cada lado */
+.content-wrapper {
+  margin: 0 0%;
+  box-sizing: border-box;
+}
+
+/* Opcional: dentro del wrapper, si usas .container de Bootstrap, 
+   anula su max-width para que ocupe el 100% del wrapper */
+.content-wrapper .container {
+  max-width: none;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Evita scroll horizontal */
+  }
+

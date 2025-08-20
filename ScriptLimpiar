@@ -1,0 +1,34 @@
+-- LIMPIEZA SEGURA DE LA BASE DE DATOS "e-commerce"
+-- 1) Hace DELETE en el orden que respeta claves foráneas
+-- 2) Reinicia AUTO_INCREMENT
+-- ADVERTENCIA: irreversible. HACER BACKUP antes.
+
+START TRANSACTION;
+
+-- 1) Borrar tablas que dependen de otras (hijas o que referencian productos)
+DELETE FROM `payments`;         -- payments -> products (sin ON DELETE CASCADE)
+DELETE FROM `order_details`;    -- order_details -> orders (aunque hay cascade, borramos explícito)
+DELETE FROM `shipping_details`; -- shipping_details -> orders
+
+-- 2) Ahora borrar orders (si lo haces con TRUNCATE daba error por FKs; usamos DELETE)
+DELETE FROM `orders`;
+
+-- 3) Borrar productos y categorías (respetando FK products->categories)
+DELETE FROM `products`;
+DELETE FROM `categories`;
+
+-- 4) Tablas independientes
+DELETE FROM `entrega`;
+DELETE FROM `users`;
+
+COMMIT;
+
+-- 5) Reiniciar AUTO_INCREMENT en tablas que lo usan (ajusta si agregaste tablas nuevas)
+ALTER TABLE `categories`     AUTO_INCREMENT = 1;
+ALTER TABLE `orders`         AUTO_INCREMENT = 1;
+ALTER TABLE `order_details`  AUTO_INCREMENT = 1;
+ALTER TABLE `payments`       AUTO_INCREMENT = 1;
+ALTER TABLE `products`       AUTO_INCREMENT = 1;
+ALTER TABLE `users`          AUTO_INCREMENT = 1;
+
+-- FIN
